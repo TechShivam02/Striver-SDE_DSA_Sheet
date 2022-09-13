@@ -1,0 +1,171 @@
+1) 
+
+void fun1(struct node* head)
+{
+  if(head == NULL)
+    return;
+  
+  fun1(head->next);
+  cout << head->data
+}
+
+Ans :  Prints all nodes of linked list in reverse order
+
+
+
+
+2)
+
+Which of the following is not a disadvantage to the usage of array?
+Ans : Accessing elements at specified positions
+
+
+3)
+What is the time complexity of inserting at the end in dynamic arrays?
+Ans : Either O(1) or O(n)
+Exp : /*
+  Depending on whether the array is full or not, the complexity in dynamic array varies. 
+  If you try to insert into an array which is not full, then the element is simply stored at the end, this takes O(1) time.
+  If you try to insert into an array which is full, first you will have to allocate an array with double the size of the current array and then copy all the elements into it and finally insert the new element, this takes O(n) time.
+ */
+
+
+
+
+
+
+    What is the space complexity for deleting a linked list?
+    O(1)  || O(n)
+
+
+
+4) 
+The following function reverse() is supposed to reverse a singly linked list. 
+There is one line missing at the end of the function.
+
+static void reverse(struct node** head_ref)
+{
+    struct node* prev   = NULL;
+    struct node* current = *head_ref;
+    struct node* next;
+    while (current != NULL)
+    {
+        next  = current->next; 
+        current->next = prev;  
+        prev = current;
+        current = next;
+    }
+    /*ADD A STATEMENT HERE*/    ///  ....................
+}
+
+
+Ans : *head_ref = prev;
+
+
+
+
+6)
+
+ 1->2->3->4->5->6
+
+ void fun(struct node* start)
+{
+  if(start == NULL)
+    return;
+  cout << start->data;
+  
+  if(start->next != NULL )
+    fun(start->next->next);
+  cout << start->data;
+}
+
+
+Ans :  1 3 5 5 3 1
+
+
+
+
+
+7) Which of these is not an application of linked lists?
+
+
+1    To implement file systems
+2    For separate chaining in hash-tables
+3    To implement non-binary trees
+4    Random Access of elements
+
+Ans : Random Access of elements
+
+
+
+
+8)  modifies the list by moving the last element to the front of the list and returns the modified list
+
+Node *move_to_front(Node *head)
+{
+  Node *p, *q;
+  if ((head == NULL: || (head->next == NULL))
+    return head;
+  q = NULL; p = head;
+  while (p-> next !=NULL)
+  {
+    q = p;
+    p = p->next;
+  }
+  __________
+  return head;
+}
+
+Ans :  q->next = NULL; p->next = head; head = p;
+
+
+
+
+
+
+9) Which of the following is false about a doubly linked list?
+
+    1) We can navigate in both the directions
+    2) It requires more space than a singly linked list
+    3) The insertion and deletion of a node take a bit longer
+    4) None of the mentioned   // Ans ...
+
+
+
+
+
+
+10)    Given a LList -->  1, 2, 3, 4, 5, 6, 7
+
+
+void rearrange(struct node *list)
+{
+  struct node *p, * q;
+  int temp;
+  if ((!list) || !list->next)
+      return;
+  p = list;
+  q = list->next;
+  while(q)
+  {
+     temp = p->value;
+     p->value = q->value;
+     q->value = temp;
+     p = q->next;
+     q = p?p->next:0;
+  }
+}
+
+Ans :  2,1,4,3,6,5,7
+
+
+
+
+
+11)  What is the time complexity to count the number of elements in the linked list?
+Ans : O(n);
+
+
+
+
+
