@@ -1,0 +1,42 @@
+ bool detectLoopMap(Node* head){
+        
+        
+        unordered_map<Node*,bool> mp;
+        
+        
+        while(head!= NULL){
+            
+            if(mp[head] == true){
+                return true;
+            }
+            
+            mp[head] = true;
+            
+            head = head->next;
+            
+        }
+        
+        return false;
+        
+            
+    }
+    
+    
+    
+    bool detectLoop(Node* head)
+    {
+       
+       if(head == NULL || head->next == head){
+           return true;
+       }
+       
+       
+       // Approach 1 : slow fast  , where slow = fast   looop Found ,    but if llist is very large may take time More
+       
+       // Approach 2 : Optimized  using map 
+       
+       bool ans = detectLoopMap(head);
+       
+       return ans;
+       
+    }
