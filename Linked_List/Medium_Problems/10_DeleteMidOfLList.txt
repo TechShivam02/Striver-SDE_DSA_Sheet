@@ -1,0 +1,37 @@
+
+ void getMid(Node* &head , Node* &prevMid){
+        
+        Node* slow=head;
+        Node* fast=head;
+        
+        while(fast !=NULL && fast->next!=NULL){
+            prevMid = slow;
+            
+            fast = fast -> next ->next;
+            slow = slow-> next;
+        }
+        
+}
+    
+    
+    
+Node* deleteMid(Node* head)
+{
+    if(head == NULL){
+        return head;
+    }
+    
+    Node* prevMid = head;
+    
+    getMid(head , prevMid);
+    
+    Node* temp = prevMid->next;
+    
+    prevMid->next = prevMid->next->next;
+    delete temp;
+    
+    
+    return head;
+    
+    
+}

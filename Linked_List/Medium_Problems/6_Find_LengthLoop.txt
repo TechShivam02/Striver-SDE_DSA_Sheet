@@ -1,0 +1,70 @@
+
+
+bool detectIfPresent(struct Node *head ,struct Node *&slow , struct Node * &fast){
+
+         
+            while(fast != NULL && fast->next != NULL){
+                slow = slow->next;
+                fast = fast->next->next;
+                
+                if(slow == fast){
+                    return true;
+                }
+            }
+         
+         return false;
+         
+         
+     }
+     
+     
+int countNodesinLoop(struct Node *head)
+{
+    if(head== NULL ){
+        return 0;
+    }
+    
+    if(head->next == head ){
+        return 1;
+    }
+    
+    Node* slow = head;
+    Node* fast = head;
+    
+    bool ans = detectIfPresent(head , slow , fast);
+    
+    if(ans){
+        
+        slow = head;
+        
+      
+      while(fast  != slow){
+          fast = fast->next;
+          slow = slow->next;
+      }
+      
+      
+      // slow ptr is on , where the tail is pointing to looping node
+      
+      Node* temp = slow;
+      
+      int count=1;
+      
+      while(temp->next != slow){
+          count++;
+          temp = temp->next;
+      }
+      
+      
+      return count;
+      
+       
+    }
+    
+    
+    
+    return 0;
+    
+    
+    
+}
