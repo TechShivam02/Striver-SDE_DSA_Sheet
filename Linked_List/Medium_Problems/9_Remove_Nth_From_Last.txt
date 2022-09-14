@@ -1,0 +1,57 @@
+
+int countNodes(Node* head){
+ 
+    if(head == NULL) {
+        return 0;
+    } 
+    
+    Node* temp = head;
+    int count=0;
+    
+    
+    while(temp){
+        count++;
+        temp = temp->next;
+    }
+    
+    return count;
+    
+    
+    
+}
+
+//Function to find the data of nth node from the end of a linked list.
+int getNthFromLast(Node *head, int x)
+{
+    
+    if(head== NULL){
+        return -1;
+    }
+    
+    
+    int total = countNodes(head);
+    
+    int start = total-x;
+    
+    if(start<0){
+        return -1;
+    }
+    
+    else
+    {
+        int i=0;
+        
+        Node* temp = head;
+        
+        while(temp && i<start){
+            temp = temp->next;
+            i++;
+        }
+        
+        return temp->data;
+        
+    }
+    
+    
+    
+}

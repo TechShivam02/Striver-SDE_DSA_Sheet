@@ -1,0 +1,44 @@
+
+    Node* findIntersection(Node* head1, Node* head2)
+    {
+        unordered_map<int,bool>mp;
+        
+        Node* temp = head2;
+        
+        while(temp != NULL){
+            
+            mp[temp->data] = true;
+            
+            temp = temp->next;
+           
+        }
+        
+        
+        
+        Node* ptr = head1;
+        
+        
+        Node *ans = new Node(-1);
+        Node *start = ans;
+        
+        
+        while(ptr != NULL){
+            
+            if(mp[ptr->data] == true)
+            {
+                Node* newNode = new Node(ptr->data);
+                
+                ans -> next = newNode;
+                ans = ans->next;
+                
+            }
+            
+            
+            ptr = ptr->next;
+            
+        }
+        
+        
+        return start->next;
+        
+    }

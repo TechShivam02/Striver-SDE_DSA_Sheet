@@ -1,0 +1,95 @@
+
+    Node* segregate(Node *head) {
+        
+        Node *temp = head;
+        
+        Node *Zerohead = new Node(-1);
+        Node *Zerotail = Zerohead;
+        
+        Node *Onehead  = new Node(-1);
+        Node *Onetail = Onehead;
+        
+        Node *Twohead  = new Node(-1);
+        Node *Twotail = Twohead;
+
+
+        while(temp){
+         
+            if(temp->data ==0){
+                
+                Zerotail->next = temp;
+                Zerotail = Zerotail->next;
+                temp = temp->next;
+            
+                
+            }   
+            
+            
+            else if(temp->data ==1){
+                
+                Onetail->next = temp;
+                Onetail = Onetail->next;
+                temp = temp->next;
+                
+            }   
+            
+            else {
+                
+                Twotail->next = temp;
+                Twotail = Twotail->next;
+                temp = temp->next;
+                
+            }   
+            
+            
+        }
+        
+        
+        
+        Zerotail->next = Onehead;
+        Onetail->next = Twohead;
+        Twotail->next = NULL;
+        
+        
+        
+        
+
+   Node* prev = Zerohead;
+   Node* curr = Zerohead->next;
+
+    while(curr != NULL){
+    
+    
+    
+    if(curr -> data == -1){
+            
+            Node* temp = curr;
+            
+            curr = curr->next;
+
+            prev->next = curr;
+            delete temp;
+
+        }
+
+        else{
+            prev = prev->next;
+            curr = curr->next;
+        }
+        
+    }
+
+
+    
+    Node* ptr = Zerohead;
+    Zerohead = Zerohead->next;
+    
+    delete ptr;
+    
+    
+
+    return Zerohead;
+
+        
+        
+    }

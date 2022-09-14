@@ -1,0 +1,128 @@
+Node* reverse(Node* head){
+
+       
+
+              Node* curr=head;
+
+              Node* prev=NULL;
+
+              Node* forward=NULL;
+
+           
+
+           while(curr!=NULL){
+
+               forward=curr->next;
+
+               curr->next=prev;
+
+               prev=curr;
+
+               curr=forward;
+
+           }
+
+           
+
+           return prev;
+
+       
+
+ }
+
+
+
+
+
+    Node* addOne(Node *head) 
+
+    {
+
+        if(head == NULL){
+
+            return head;
+
+        }
+
+        
+
+        if(head->next == NULL){
+
+            head->data = head->data +1;
+
+            return head;
+
+        }
+
+        
+
+        
+
+        head = reverse(head);   // reverse    99
+
+        
+
+        Node * temp = head;   // 9  9
+
+        
+
+        Node *prev= NULL;
+
+        
+
+        
+
+        int carry = 1;
+
+       
+
+               while(temp != NULL){
+
+                   
+
+                   prev = temp;
+
+                    
+
+                    int sum = temp->data +  carry;
+
+                    
+
+                    int ans = sum %10;
+
+                    carry = sum /10;
+
+                    
+
+                    temp->data = ans;
+
+                    temp = temp->next;
+               }
+
+
+               if(carry > 0){
+
+                   
+
+                   Node* newNode = new Node(carry);
+
+                   
+
+                   prev->next = newNode;
+
+                   prev = prev->next;
+
+                   
+
+               }
+
+   
+        head = reverse(head);
+
+        
+
+        return head;
+
+        
+
+    }
