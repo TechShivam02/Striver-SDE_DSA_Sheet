@@ -1,0 +1,55 @@
+
+    struct node* reverseByK(struct node *head , int &k){
+        
+               
+          if(head == NULL){
+            return head;
+          }  
+          
+          int count=0;
+          
+          node *prev = NULL;
+          node *curr = head;
+          node *forward = head;
+        
+          while(curr != NULL && count<k)
+          {
+            forward = curr->next;
+            curr->next = prev;
+            
+            prev= curr;
+            curr=forward;
+            
+            
+            count++;
+            
+          }
+          
+          
+          if(forward != NULL){
+            head -> next = reverseByK(forward , k);   
+          }
+  
+  
+  
+          return prev;
+  
+        
+    }
+    
+    
+    
+    
+    struct node *reverse (struct node *head, int k)
+    { 
+               
+          if(head == NULL){
+            return head;
+          }
+          
+          node *ptr = reverseByK(head , k);
+          
+          return ptr;
+          
+          
+    }
