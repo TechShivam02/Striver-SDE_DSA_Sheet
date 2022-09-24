@@ -1,0 +1,37 @@
+#include <bits/stdc++.h> 
+
+void insertAtCorrectPos(stack<int> &stk , int ele){
+    
+    if(stk.empty() == true || ( ele > stk.top() )  ){
+        stk.push(ele);
+        return;
+    }
+    
+    int top = stk.top();
+    stk.pop();
+    
+    insertAtCorrectPos(stk , ele);
+    
+    stk.push(top);
+    
+    
+}
+    
+void sortStack(stack<int> &stk)
+{
+    
+    if(stk.empty() == true){
+        return;
+    }
+    
+    int top = stk.top();
+    stk.pop();
+    
+    sortStack(stk);
+    
+    
+    insertAtCorrectPos(stk , top);
+    
+    
+    
+}

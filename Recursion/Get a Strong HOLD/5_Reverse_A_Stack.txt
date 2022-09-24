@@ -1,0 +1,42 @@
+
+
+
+void insertBottom(stack<int> &stk , int ele){
+    
+    if(stk.empty()){
+        stk.push(ele);
+        return;
+    }
+    
+    int top = stk.top();
+    stk.pop();
+    
+    insertBottom(stk , ele);
+    
+    stk.push(top);
+    
+    
+}
+
+
+    void solve(stack<int> &stk){
+        
+        if(stk.empty() == true){
+            return;
+        }
+        
+        int top  = stk.top();
+        stk.pop();
+        
+        solve(stk);
+        
+        insertBottom(stk , top);
+        
+        
+    }
+
+void reverseStack(stack<int> &stack) {
+   
+    solve(stack);
+    
+}

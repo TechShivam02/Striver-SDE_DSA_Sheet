@@ -1,0 +1,29 @@
+#include <bits/stdc++.h> 
+
+
+void solve(stack<int> &stk , int ele){
+    
+    if(stk.empty()){
+        stk.push(ele);
+        return;
+    }
+    
+    int top = stk.top();
+    stk.pop();
+    
+    solve(stk , ele);
+    
+    stk.push(top);
+    
+    
+}
+
+
+stack<int> pushAtBottom(stack<int>& st, int x) 
+{
+    
+    solve(st , x);
+    
+    return st;
+    
+}
