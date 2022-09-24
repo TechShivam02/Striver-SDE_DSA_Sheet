@@ -1,0 +1,67 @@
+// if not Clear  take reference from : https://www.youtube.com/watch?v=6021UbhPEdY
+
+    long long power(int N , int R)
+
+    {
+
+       if(R==1)
+
+            return N;
+
+ 
+
+    /*
+
+    
+
+        for eg : to find : 8^24 :
+
+          
+
+           if rev = even  :  it can be done as  8^12 * 8^12
+
+       
+
+        for eg : to find :  8^25 :
+
+          
+
+           if rev = Odd  :  it can be done as  8 * 8^12 * 8^12
+
+       
+
+          8^12   8^6   8^3  8^1     reducing into log n
+
+    
+
+    */
+
+ 
+
+        long long ans = power(N,R/2);
+
+        if(R%2==0){   
+
+ 
+
+            return (( ans%1000000007 * ans)%1000000007)%1000000007;
+
+            
+
+        }
+
+ 
+
+        else{
+
+            
+
+        return ( N %1000000007 *  (( ans%1000000007 * ans)%1000000007)%1000000007 );
+
+      
+
+       }
+
+       
+
+    }
