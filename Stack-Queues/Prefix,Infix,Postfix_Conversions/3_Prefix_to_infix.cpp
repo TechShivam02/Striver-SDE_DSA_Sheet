@@ -2,6 +2,17 @@
 using namespace std;
 
 
+
+
+    /*
+
+        1) Reverse
+        2) Solve ( Second Operator First)   // second = top ele of stack  , first = below of first ele
+
+    */
+
+    
+
 string Prefix_to_Infix(string str) {
     
         
