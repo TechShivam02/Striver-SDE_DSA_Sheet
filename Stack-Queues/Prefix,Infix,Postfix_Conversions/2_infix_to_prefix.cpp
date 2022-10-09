@@ -147,8 +147,6 @@ string Infix_To_Prefix(string str){
 
     reverse(str);
 
-
-
     string ans = infixToPostfix(str);
 
     reverse(ans);
