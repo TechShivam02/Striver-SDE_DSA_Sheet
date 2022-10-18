@@ -60,7 +60,7 @@ struct node* tail;
             
 
 
-    void  removeAllOcuurence(struct node* head,struct node* tail , int key) {
+    void  removeDupl(struct node* head,struct node* tail){
             
             if(head == NULL || head->next == NULL)
             {
@@ -71,27 +71,13 @@ struct node* tail;
 
             while (temp)
             {
-                if(head->data == key && head!=NULL){
-                    
-
-                    node* ptr = head;
-
-                    head=head->next;
-                    temp=  head;
-
-                    delete ptr;
-
-                }
-
-                else if(temp->next && temp->next->data == key){
+                if(temp->next && temp->next->data == temp->data){
                     
                     node* ptr = temp->next;
                     temp->next = temp->next->next;
-
                     delete ptr;
 
                 }
-
 
                 else{
                     temp = temp->next;
@@ -99,7 +85,6 @@ struct node* tail;
 
 
             }
-
 
 
             display(head);
@@ -112,44 +97,30 @@ struct node* tail;
 
 int main(){
         
-
-
-
-
-            head = new node(2);
+            head = new node(4);
             tail = head;
             
             
+            insertEnd(tail , 4);
+            insertEnd(tail , 4);
+            insertEnd(tail , 4);
             
-            insertEnd(tail , 2);
-            
-            insertEnd(tail , 2);
-            
-            insertEnd(tail , 10);
+            insertEnd(tail , 6);
 
             insertEnd(tail , 8);
-            insertEnd(tail , 4);
+            insertEnd(tail , 8);
 
-            insertEnd(tail , 2);
-            insertEnd(tail , 5);
-            insertEnd(tail , 2);
-            
+            insertEnd(tail , 10);
 
-            
-            
-
-
+            insertEnd(tail , 12);
+            insertEnd(tail , 12);
 
             
             display(head);
 
-            int key = 2;
 
-            removeAllOcuurence(head,tail , key);
+            removeDupl(head,tail);
 
-            
-
-        
 }
 
 

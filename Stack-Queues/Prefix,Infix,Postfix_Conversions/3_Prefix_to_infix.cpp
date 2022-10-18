@@ -2,8 +2,6 @@
 using namespace std;
 
 
-
-
     /*
 
         1) Reverse
@@ -12,6 +10,7 @@ using namespace std;
     */
 
     
+
 
 string Prefix_to_Infix(string str) {
     
@@ -84,22 +83,18 @@ void reverse(string &str){
         r--;
    }
 
-
-
-
-
 }
+
 
 
 string solve(string str){
 
     reverse(str);
-
     string ans = Prefix_to_Infix(str);
-
     return ans;
 
 }
+
 
 
 int main(){

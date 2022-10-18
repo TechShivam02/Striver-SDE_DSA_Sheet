@@ -43,6 +43,7 @@
         
         
         Node* temp= mid->next;   // temp = 2
+        
         mid->next= reverse(temp);   // 1 2 3 1 2
         
         

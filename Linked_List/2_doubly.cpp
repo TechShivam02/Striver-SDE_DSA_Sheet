@@ -29,12 +29,6 @@ struct node{
             struct node* tail;
 
             
-            
-
-            
-            
-            
-        
         
     void insertBegin(struct node* &head , int newData){   //  1 2 3
         
@@ -83,8 +77,6 @@ void insertAtPosition(struct node* &head , int pos , int data){
                     temp = temp->next;
                     count++;
                 }
-                
-                
                     
               struct node* NewTemp = new node(data);
               NewTemp->next = temp->next;

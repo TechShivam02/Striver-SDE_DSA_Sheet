@@ -43,12 +43,12 @@
                 // it is a operator 
                 // it is ( or )
                 
-                if(str[i] == '('){       // it is ( or )
+                if(str[i] == '('){       // if open then push
                     stk.push(str[i]);
                 }
                 
                 
-                else if(str[i] == ')'){   // it is ( or )
+                else if(str[i] == ')'){   //  if closed then pop , intil ( not found  and adding to the expression
                     
                     while(!stk.empty() && stk.top() != '('){
                         
@@ -61,22 +61,21 @@
                     if(!stk.empty() && stk.top() == '('){
                             stk.pop();       
                     }
-                 
-                    
+                     
                 }
                 
                 
-               
         
-                else{    // it is a operator 
+                else{     // it is a operator 
+
                     
-                    if(stk.empty())
+                    if(stk.empty())  
                     {
                         stk.push(str[i]);
                     }
                     
                     
-                    else{
+                    else{ 
                         
                         while( !stk.empty() &&  Precedence(stk.top()) >= Precedence(str[i]) ){
                             

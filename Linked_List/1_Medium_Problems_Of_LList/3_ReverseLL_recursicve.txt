@@ -2,7 +2,7 @@ struct Node* reverseList(struct Node *head)
     {
        
       
-      if(head == NULL || head->next == NULL)
+          if(head == NULL || head->next == NULL)
             {
                 return head;
             }   
@@ -16,3 +16,4 @@ struct Node* reverseList(struct Node *head)
         
         return newhead;
     }
+

@@ -57,11 +57,11 @@
    Node* prev = Zerohead;
    Node* curr = Zerohead->next;
 
-    while(curr != NULL){
+
+
+  while(curr){
     
-    
-    
-    if(curr -> data == -1){
+     if(curr -> data == -1){
             
             Node* temp = curr;
             
@@ -73,7 +73,7 @@
         }
 
         else{
-            prev = prev->next;
+            prev = curr;
             curr = curr->next;
         }
         

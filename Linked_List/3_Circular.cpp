@@ -10,11 +10,8 @@ using namespace std;
             node(int newData){
                 
                 this->data = newData;
-                this->next = NULL;
-                
-                
+                this->next = NULL;   
             }
-        
         };
         
 
@@ -44,10 +41,9 @@ using namespace std;
                 head ->next = newNode;
 
                 tail = head;
-
-
             }
-}
+                    
+        }
             
             
             

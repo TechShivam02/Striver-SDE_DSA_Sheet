@@ -1,5 +1,5 @@
-        #include<iostream>
-        using namespace std;
+    #include<iostream>
+    using namespace std;
         
         
         struct node{
@@ -12,12 +12,10 @@
                 this->data = newData;
                 this->next = NULL;
                 
-                
             }
         
         };
-        
-        
+
         
             void insertBegin(struct node* &head , int newData){
         
@@ -25,10 +23,7 @@
               temp ->next = head;
               
               head = temp;
-              
-              
-                
-            }
+        }
             
             
             void insertEnd(struct node* head , int newData){
@@ -79,9 +74,9 @@
                 }
                 
                 cout<<endl<<endl;
-        
-        
             }
+
+
             
             
             
@@ -187,9 +182,9 @@
             struct node* head = new node(1);
         
             struct node* temp2 = new node(2);
+            
             head->next = temp2;
-        
-        
+            
             display(head);
             
             
