@@ -52,9 +52,6 @@ string Prefix_to_Infix(string str) {
                 string ans  =   second  + first +  str[i];     // second first Operator
 
                 stk.push(ans);
-
-               
-            
             }   
             
             

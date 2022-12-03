@@ -1,0 +1,40 @@
+
+ bool solveAns(TreeNode* root , vector<int> &ans , int node){
+     
+     if(!root){
+         return false;
+     }
+     
+     if(root->val == node){
+         ans.push_back(root->val);
+         return true;
+     }
+     
+     bool left = solveAns(root->left , ans , node);
+     bool right = solveAns(root->right , ans , node);
+     
+     if(left || right){
+         ans.push_back(root->val);
+         return true;
+     }
+     
+     return false;
+     
+    
+     
+     
+ }
+ 
+ 
+vector<int> Solution::solve(TreeNode* A, int B) {
+    
+    vector<int> ans;
+    
+    bool check = solveAns(A , ans , B);
+    
+    reverse(ans.begin() , ans.end());
+    
+    return ans;
+    
+    
+}

@@ -1,6 +1,5 @@
 
-    struct node* reverseByK(struct node *head , int &k){
-        
+  struct node* reverseByK(struct node *head , int &k){
                
           if(head == NULL){
             return head;
@@ -24,6 +23,7 @@
             count++;
             
           }
+          
           
           
           if(forward != NULL){

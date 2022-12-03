@@ -1,0 +1,75 @@
+void solve(TreeNode* root , vector<int> &ans){
+        
+        TreeNode* curr = root;
+        
+        while(curr != NULL){
+            
+            if(curr->left == NULL){
+                
+                ans.push_back(curr->val);
+                curr = curr->right;
+                
+            }
+            
+            else{
+                
+                
+                // finding the predecessor
+                TreeNode* pred = curr->left;
+                
+                if(pred!= NULL){
+                    
+                    while(pred->right != NULL && pred->right != curr){
+                        pred=pred->right;
+                    }
+                }
+                
+                
+                // pred found
+                
+                
+                
+                
+                if(pred -> right == curr){  // pred hta do
+                    pred->right = NULL;
+                    curr=curr->right;
+                }
+                
+                else{  // pred bna do
+                    
+                    ans.push_back(curr->val);
+                    
+                    pred->right = curr;
+                    curr = curr->left;
+                    
+                }
+                
+                
+            }  // else     curr left == NULL
+            
+            
+        }   // while loop 
+        
+        
+        
+        
+    }   // function solve
+    
+    
+    
+    
+    vector<int> preorderTraversal(TreeNode* root) {
+        
+        
+        vector<int> ans;
+        
+        if(root == NULL){
+            return ans;
+        }
+        
+        solve(root, ans);
+        
+        return ans;
+        
+
+    }

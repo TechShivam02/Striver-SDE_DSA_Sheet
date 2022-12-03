@@ -1,0 +1,76 @@
+void solve(TreeNode* root , vector<int> &ans){
+        
+        TreeNode* curr = root;
+        
+        while(curr != NULL){
+            
+            if(curr->left == NULL){
+                
+                ans.push_back(curr->val);
+                curr = curr->right;
+                
+            }
+            
+            else{
+                
+                
+                // finding the predcessor
+                TreeNode* pred = curr->left;
+                
+                if(pred!= NULL){
+                    
+                    while(pred->right != NULL && pred->right != curr){
+                        pred=pred->right;
+                    }
+                }
+                
+                
+                // pred finded
+                
+                
+                if(pred -> right == NULL){  // pred ko curr k sath link krdo (pred bnao)
+                    pred->right = curr;
+                    curr=curr->left;
+                }
+                
+                else{  // pred htao
+                    
+                    ans.push_back(curr->val);
+                    
+                    pred->right = NULL;
+                    curr = curr->right;
+                    
+                }
+                
+                
+            }  // else     curr left == NULL
+            
+            
+        }   // while loop 
+        
+        
+        
+        
+    }   // function solve
+    
+    
+    
+    
+    
+    vector<int> inorderTraversal(TreeNode* root) {
+        
+       vector<int> ans;
+        
+        if(root == NULL){
+            return ans;
+        }
+        
+        solve(root, ans);
+        
+        return ans;
+        
+       
+        
+        
+    }
+    
