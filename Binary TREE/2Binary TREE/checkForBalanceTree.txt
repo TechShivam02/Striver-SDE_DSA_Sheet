@@ -1,0 +1,43 @@
+pair<bool,int> AnsBalanced(Node* root){
+        
+        if(root == NULL){
+            pair<bool,int> p = make_pair(true , 0);
+            return p;
+        }
+        
+        
+        pair<bool , int > left = AnsBalanced(root->left);
+        pair<bool , int > right = AnsBalanced(root->right);
+        
+        
+        bool leftAns = left.first;
+        bool rightAns = right.first;
+        
+        bool diff = abs(left.second - right.second) <= 1;
+        
+        
+        if( leftAns && rightAns && diff){
+            
+            int height = max(left.second , right.second) +1;
+            pair<bool,int> p = make_pair(true , height);
+            return p;
+        }
+        
+        else{
+            
+            pair<bool,int> p = make_pair(false , 0);
+            return p;
+        }
+        
+        
+        
+        
+    }
+    
+    bool isBalanced(Node *root)
+    {
+        pair<bool,int> ans = AnsBalanced(root);
+        
+        return ans.first;
+        
+    }
