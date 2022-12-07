@@ -1,0 +1,96 @@
+void traversalLeft(Node *root , vector<int> &ans){
+        
+        if(root == NULL){
+            return;
+        }
+        
+        if(!root->left && !root->right){
+            return;
+        }
+        
+        
+        ans.push_back(root->data);
+        
+        if(root->left){
+            traversalLeft(root->left , ans);
+        }
+        
+        else{
+            traversalLeft(root->right , ans);
+        }
+        
+    }
+    
+    
+    
+    
+    void traversalLeaf(Node* root , vector<int> &ans){
+        if(root == NULL){
+            return;
+        }
+        
+        if(!root->left && !root->right){
+            ans.push_back(root->data);
+        }
+        
+        traversalLeaf(root->left , ans);
+        traversalLeaf(root->right , ans);
+        
+        
+    }
+    
+    
+    void traversalRight(Node *root , vector<int> &ans){
+        
+        if(root == NULL){
+            return;
+        }
+        
+        if(!root->left && !root->right){
+            return;
+        }
+        
+        if(root->right)
+        {
+            traversalRight(root->right , ans);
+        }
+        
+        else
+        {
+            traversalRight(root->left , ans);
+        }
+        
+        
+        ans.push_back(root->data);
+        
+    }
+    
+    
+    
+    
+    
+        
+    vector <int> boundary(Node *root)
+    {
+        vector<int> ans;
+        ans.push_back(root->data);
+        
+        
+        
+        traversalLeft(root->left , ans);
+        
+        traversalLeaf(root->left , ans);
+        traversalLeaf(root->right , ans);
+        
+        traversalRight(root->right , ans);
+        
+        
+        return ans;
+        
+        
+        
+        
+        
+        
+        
+    }

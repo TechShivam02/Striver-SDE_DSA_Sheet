@@ -1,0 +1,59 @@
+ vector <int> zigZagTraversal(Node* root)
+    {
+        vector<int> ans;
+        
+        if(root == NULL){
+            return ans;
+        }
+        
+        queue<Node*> q;
+        q.push(root);
+        
+        bool odd=true;
+        
+        
+        while(!q.empty()){
+        
+        vector<int> temp;
+            int s = q.size();
+            
+            
+            while(s--){
+                
+                Node* node = q.front();
+                q.pop();
+                
+                temp.push_back(node->data);
+                
+                if(node->left){
+                    q.push(node->left);
+                }
+                
+                if(node->right){
+                    q.push(node->right);
+                }
+                
+                
+            }
+            
+            
+        if(!odd)
+        {
+            reverse(temp.begin() , temp.end());
+        }
+        
+        for(auto i : temp){
+            ans.push_back(i);
+        }
+        
+        odd = !odd;
+        
+            
+}
+
+
+    return ans;
+    
+        
+        
+    }
