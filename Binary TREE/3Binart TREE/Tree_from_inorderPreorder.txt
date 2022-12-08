@@ -1,0 +1,52 @@
+void createMapping(int in[] , int n , map<int,int> &mp){
+        
+        for(int i=0;i<n;i++){
+            mp[in[i]] = i;
+        }
+        
+        
+    }
+    
+    
+    
+    Node* buildTheTree(int in[] , int pre[] , int &preorderIndex , int inorderstart , int inorderend , int n , map<int,int> &mp){
+        
+        if(preorderIndex >= n || inorderstart > inorderend ){
+            return NULL;
+        }
+        
+        
+        int ele = pre[preorderIndex++];
+        int pos = mp[ele];
+        
+        Node* root = new Node(ele);
+        
+        
+        root->left =  buildTheTree(in,pre , preorderIndex , inorderstart , pos-1 , n , mp);
+        root->right = buildTheTree(in,pre , preorderIndex , pos+1 , inorderend , n , mp);
+        
+        
+        return root;
+        
+        
+    }
+        
+    Node* buildTree(int in[],int pre[], int n)
+    {
+        
+        map<int,int> mp;
+        
+        
+        createMapping(in , n , mp);
+        
+        int preorderIndex = 0;
+        
+        Node* ans = buildTheTree(in, pre , preorderIndex , 0 , n-1 , n , mp);    // inorder[]  preorder[]   preordeIndx    inorderStart  inordderEnd    sizeInorder    mp(int,int)   nodesValue : index
+        
+        
+        return ans;
+        
+        
+        
+        
+    }

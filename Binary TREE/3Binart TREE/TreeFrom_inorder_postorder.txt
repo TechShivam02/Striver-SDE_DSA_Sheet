@@ -1,0 +1,46 @@
+
+void createMapping(int in[] , map<int,int> &mp , int n){
+    
+    for(int i=0;i<n;i++){
+        mp[in[i]] = i;
+    }
+    
+}
+
+Node* buildTheTree(int in[] , int post[] , int &postorderIndex , int inorderstart , int inorderend  , int n , map<int,int> &mp){
+    
+    if(n < 0 || inorderstart > inorderend ){
+        return NULL;
+    }
+    
+    int ele = post[postorderIndex--];
+    int pos = mp[ele];
+    
+    Node* root = new Node(ele);
+    
+    
+    
+    root -> right = buildTheTree(in , post , postorderIndex , pos+1 , inorderend , n , mp);
+    root -> left = buildTheTree(in , post , postorderIndex , inorderstart , pos-1 , n , mp);
+    
+    return root;
+    
+    
+}
+//Function to return a tree created from postorder and inoreder traversals.
+Node *buildTree(int in[], int post[], int n) {
+    // Your code here
+    
+    map<int,int> mp;
+    createMapping(in , mp , n);
+    
+    
+    int postorderIndex = n-1;
+    
+    Node* ans = buildTheTree(in , post , postorderIndex , 0 , n-1  , n , mp);
+    
+    return ans;
+    
+    
+    
+}
