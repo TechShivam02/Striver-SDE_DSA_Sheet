@@ -1,0 +1,26 @@
+ bool findAns(TreeNode* root , long long  min , long long  max){
+        if(root == NULL){
+            return true;
+        }
+        
+        bool left = findAns(root->left , min , root->val);
+        bool right = findAns(root->right , root->val , max);
+        
+        bool op3 = root->val > min && root->val < max;
+        
+        if(left && right && op3){
+            return true;
+        }
+        
+        return false;
+        
+    }
+    
+    bool isValidBST(TreeNode* root) {
+        
+        long long  min = LONG_MIN;
+        long long max = LONG_MAX;
+        
+        
+        
+        return find

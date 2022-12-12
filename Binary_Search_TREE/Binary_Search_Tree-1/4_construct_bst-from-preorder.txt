@@ -1,0 +1,31 @@
+ TreeNode* ConstructBST(vector<int> vec , int mini , int maxi , int &i){
+        
+        if( i >= vec.size() ){
+            return NULL;
+        }
+        
+        
+        if( vec[i] < mini || vec[i] > maxi ){
+            return NULL;
+        }
+        
+        TreeNode* root = new TreeNode(vec[i++]);
+        
+        root->left = ConstructBST(vec , mini , root->val , i);
+        root->right = ConstructBST(vec  , root->val , maxi , i);
+        
+        return root;
+        
+    }
+    
+    TreeNode* bstFromPreorder(vector<int>& preorder) {
+        
+        int min = INT_MIN;
+        int max = INT_MAX;
+        
+        int i=0;
+        
+        
+        return ConstructBST(preorder ,min , max,i);
+        
+    }
