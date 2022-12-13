@@ -1,0 +1,33 @@
+ void  solve(Node* root , int &i , int k , int &ans){
+        
+        
+        if(root == NULL){
+            return;
+        }
+        
+        solve(root->right , i , k , ans);
+        
+        i++;
+        
+        if(i == k){
+            ans=root->data;
+            return;
+        }
+        
+        solve(root->left , i , k , ans);
+        
+    }
+    
+    
+    
+    int kthLargest(Node *root, int k)
+    { 
+        
+        int i=0;
+        
+        int ans = -1;
+        
+        solve(root , i , k , ans);
+        
+        return ans;
+    }

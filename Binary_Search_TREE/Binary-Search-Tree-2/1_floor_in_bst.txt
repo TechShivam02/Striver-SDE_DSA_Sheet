@@ -1,0 +1,20 @@
+ TreeNode<int> * curr = root;
+    TreeNode<int> * pred = NULL;
+    
+    while(curr != NULL){
+        if(curr->val == X){
+            return X;
+        }
+        
+        if( X < curr->val){
+            curr = curr->left;
+        }
+        
+        else{
+            pred = curr;
+            curr = curr->right;
+        }
+        
+    }
+    
+    return pred->val;

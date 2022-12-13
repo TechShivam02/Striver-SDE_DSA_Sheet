@@ -1,0 +1,32 @@
+ void  solve(TreeNode* root , int &i , int k , int &ans){
+        
+        
+        if(root == NULL){
+            return;
+        }
+        
+        solve(root->left , i , k , ans);
+        
+        i++;
+        
+        if(i == k){
+            ans=root->val;
+            return;
+        }
+        
+        solve(root->right , i , k , ans);
+        
+    }
+    
+    int kthSmallest(TreeNode* root, int k) {
+        
+        int i=0;
+        
+        int ans = -1;
+        
+        solve(root , i , k , ans);
+        
+        return ans;
+        
+        
+    }
