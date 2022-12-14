@@ -1,0 +1,63 @@
+class info{
+    public:
+        
+        int maxi;
+        int mini;
+    
+        bool bst;
+        int sum;
+        
+};
+
+
+info solve(TreeNode* root , int &ans){
+    if(root == NULL){
+        return {INT_MIN , INT_MAX , true, 0};
+    }
+    
+    info left = solve(root->left , ans);
+    info right = solve(root->right , ans);
+    
+    info curr;
+    
+    if( left.bst && right.bst && (root->val > left.maxi && root->val < right.mini) ){
+        
+        curr.maxi = max(root->val , right.maxi);
+        curr.mini = min(root->val , left.mini);
+        
+        curr.bst = true;
+        
+        curr.sum = left.sum + root->val + right.sum;
+        
+    }
+    
+    else{
+        
+        curr.bst = false;
+    }
+    
+    
+    if(curr.bst){
+        ans = max(ans , curr.sum);
+    }
+    return curr;
+    
+    
+}
+
+
+class Solution {
+public:
+    int maxSumBST(TreeNode* root) {
+        
+        int ans=0;
+        
+        info curr = solve(root ,ans );
+        
+        return ans;
+        
+        
+        
+        
+    }
+};
