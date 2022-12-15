@@ -1,0 +1,264 @@
+
+#include <bits/stdc++.h>
+using namespace std;
+
+
+class heap{
+
+    public:
+        int arr[100];
+        int size;
+        
+    heap(){
+        size=0;
+        arr[0]=-1;
+    }
+    
+    
+    void insert(int val){
+        
+        size = size+1;
+        int index=size;
+        
+        arr[index] = val;
+        
+        while(index >= 1){
+            int parent = index/2;
+            
+            if(parent>=1 && arr[parent] < arr[index]){
+                swap(arr[parent],arr[index]);
+                index = parent;
+            }
+            
+            else{
+                return;
+            }
+        }
+        
+        
+    }
+    
+    
+    
+    void printmaxHeap(){
+        for(int i=1;i<=size;i++)
+        {
+            cout<<arr[i]<<" ";
+        }
+        
+        cout<<endl;
+    }
+    
+    
+    
+    
+    void deleteFromHeap(){
+        
+        if(size <1){
+            return;
+        }
+        
+        
+        arr[1] = arr[size];
+        size--;
+        
+        int index=1;
+        
+        
+        while(index <= size){
+            
+            int left = 2*index;
+            int right = 2*index+1;
+            
+            if(left <=size && arr[index] <  arr[left] ){
+                
+                swap(arr[index],arr[left]);
+                index=left;
+            } 
+            
+            else if(right <=size && arr[index] <  arr[right] ){
+                
+                swap(arr[index],arr[right]);
+                index=right;
+            } 
+            
+            else{
+                return;
+            }
+        
+        }  // while loop
+        
+        
+        
+    }  // deletion from heap 
+    
+    
+    
+    
+    
+    
+    
+};
+
+
+void Maxheapify(int arr[] , int n , int index){
+        
+        int largest = index;
+        
+        int left = 2*index;
+        int right = 2*index+1;
+        
+        
+        if(left <= n && arr[left] > arr[largest]){
+            largest = left;
+        }
+        
+        if(right <= n && arr[right] > arr[largest]){
+            largest = right;
+        }
+        
+        
+        
+        if(largest != index){
+            swap(arr[largest] , arr[index]);
+            
+            Maxheapify(arr , n , largest);
+        }
+        
+        
+}
+
+
+void heapsort(int arr[] , int n){
+
+    int size = n;
+
+
+    while(size > 1){
+        
+        swap(arr[size] , arr[1]);
+        size--;
+
+        Maxheapify(arr , size , 1);
+    
+    }
+
+
+
+}
+
+
+
+
+
+void MinHeapify(int arr[] , int n , int index){
+        
+        int smallest = index;
+        
+        int left = 2*index;
+        int right = 2*index+1;
+        
+        
+        if(left < n && arr[left] < arr[smallest]){
+            smallest = left;
+        }
+        
+        if(right < n && arr[right] < arr[smallest]){
+            smallest = right;
+        }
+        
+        
+        
+        if(smallest != index){
+            swap(arr[smallest] , arr[index]);
+            
+            MinHeapify(arr , n , smallest);
+        }
+        
+        
+    }
+
+
+
+int main()
+{
+    
+    heap h;
+    
+    // h.insert(50);
+    // h.insert(55);
+    // h.insert(53);
+    
+    // h.insert(52);
+    // h.insert(54);
+    
+    
+    h.insert(1);
+    h.insert(2);
+    h.insert(3);
+    h.insert(4);
+    h.insert(5);
+    
+    
+        h.printmaxHeap();
+    
+    
+    h.deleteFromHeap();
+    h.printmaxHeap();
+    
+    
+    // int arr[] = {-1 , 54 ,55,53,52,50};
+    int arr[] = {-1 , 3,2,1,5,4};
+    
+    int n=5;
+    
+    for(int i=n/2 ; i>0; i--){
+        Maxheapify(arr , n , i);
+    }
+    
+    cout<<endl<<"Maxheapify : "<<endl;
+    for(int i=0;i<n;i++){
+        cout<<arr[i]<<" ";
+    }
+    cout<<endl;
+
+
+    heapsort(arr , n);
+
+    cout<<"After Heap Sort  : "<<endl;
+
+    for(int i=0;i<=n;i++){
+            cout<<arr[i]<<" ";
+    }
+        cout<<endl;
+
+
+
+
+
+
+
+
+    int arr1[] = {-1 , 5,4,3,2,1};
+    
+    int n1=6;
+    
+    for(int i=n1/2-1 ; i>0; i--){
+        MinHeapify(arr1 , n1 , i);
+    }
+    
+    cout<<endl<<"Minheapfy : "<<endl;
+    for(int i=0;i<n;i++){
+        cout<<arr1[i]<<" ";
+    }
+    cout<<endl;
+
+
+
+
+
+    
+    
+
+    return 0;
+}
