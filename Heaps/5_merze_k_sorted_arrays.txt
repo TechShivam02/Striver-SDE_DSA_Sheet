@@ -1,0 +1,81 @@
+
+class node{
+    public :
+        int data;
+        int i;
+        int j;
+        
+    node(int val , int row , int col){
+        this->data = val;
+        this->i = row;
+        this->j = col;
+        
+    }
+};
+
+class compare{
+    public:
+     bool operator()(node* a, node* b){
+        return a->data > b->data;
+     }
+};
+
+
+
+class Solution
+{
+    public:
+    //Function to merge k sorted arrays.
+    vector<int> mergeKArrays(vector<vector<int>> arr, int k)
+    {
+        
+        int n = arr.size();  // n=4
+        
+        
+        priority_queue<node* , vector<node*> , compare > pq;
+        
+        // step 1;
+        
+        for(int i=0;i<k;i++)
+        {
+            node* firstnode = new node(arr[i][0] , i , 0);
+            
+            pq.push(firstnode);
+        }
+        
+        
+        
+        vector<int> ans;
+        
+       
+        while(!pq.empty()){
+            
+            node* temp = pq.top();
+            pq.pop();
+            
+            
+            int data = temp->data;
+            int row = temp->i;
+            int col = temp->j;
+            
+            ans.push_back(data);
+            
+            if(col +1 < n){
+                node* newnode = new node(arr[row][col+1] , row , col+1);
+                
+                pq.push(newnode);
+            }
+            
+            
+        }
+        
+        
+        
+        return ans;
+        
+        
+        
+        
+        
+        
+    }

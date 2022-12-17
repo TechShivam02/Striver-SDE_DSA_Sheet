@@ -1,0 +1,33 @@
+int kthSmallest(int arr[], int l, int r, int k) {
+    
+        
+        priority_queue<int> pq;  // max heap
+        
+        
+        // step 1 : for first k elem , push elem in arr
+        for(int i=0;i<k;i++){
+            pq.push(arr[i]);
+        }
+        
+        // step 2 : for rest ele , if ele < pq.top { pop  push)
+        
+        for(int i=k;i<=r;i++){
+            if(arr[i] < pq.top()){
+                pq.pop();
+                pq.push(arr[i]);
+            }
+        }
+        
+        
+        // Step3 :  // int ans = pq.top();
+        
+        
+        int ans = pq.top();
+        
+        return ans;
+        
+        
+        
+        
+        
+    }
