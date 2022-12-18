@@ -1,0 +1,113 @@
+class Solution
+{
+    public:
+    //Function to insert heap.c
+    
+   priority_queue<int> maxheap;                           //max heap
+   priority_queue<int,vector<int>,greater<int>> minheap;  //min heap
+   
+   double med = 0.0;
+   
+   
+   
+   
+   
+
+int signal(int a , int b){
+    
+    if( a==b){
+        return 0;
+    }
+    
+    else if(a>b){
+        return 1;
+    }
+    
+    return -1;
+    
+    
+}
+
+
+
+   
+    void insertHeap(int &ele)
+{
+        
+  switch ( signal(maxheap.size() , minheap.size())  ) {  
+        
+    case 0 :    // size same   n n          //  Maxheap  size  ==  Minheap size 
+         
+        if(ele > med){
+            minheap.push(ele);
+            med = (double)minheap.top();
+        }
+        
+        else{
+            maxheap.push(ele);
+            med = (double)maxheap.top();
+        }
+        
+        break;
+        
+        
+        
+        
+    case 1 :   // size    maxHeap size   > Minheap Size         
+         
+        if(ele > med){
+            minheap.push(ele);
+            med = (double)( minheap.top() + maxheap.top() ) /2;
+        }
+        
+        else{
+             minheap.push(maxheap.top());
+            maxheap.pop();
+            
+            maxheap.push(ele);
+           med = (double)( minheap.top() + maxheap.top() ) /2;
+        }
+        
+        break;
+
+        
+     
+      case -1 :    // size    MinHeap size   > Maxheap Size  
+         
+            if(ele > med){
+                maxheap.push(minheap.top());
+                minheap.pop();
+                
+                minheap.push(ele);
+                med = (double)( minheap.top() + maxheap.top() ) /2;
+            }
+        
+        else{
+            
+            maxheap.push(ele);
+            med = (double)( minheap.top() + maxheap.top() ) /2;
+        }
+        
+        break;
+        
+      
+    }    // switch bnd 
+    
+    
+        
+}
+    
+    //Function to balance heaps.
+    void balanceHeaps()
+    {
+        
+    }
+    
+    //Function to return Median.
+    double getMedian()
+    {
+        return med;
+        
+        
+    }
+};

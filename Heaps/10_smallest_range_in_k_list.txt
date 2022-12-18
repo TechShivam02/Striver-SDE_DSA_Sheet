@@ -1,0 +1,115 @@
+// you are required to complete this function 
+// function should print the required range
+
+
+class node{
+  
+    public:
+        
+        int data;
+        int i;
+        int j;
+        
+    
+    node(int val , int r , int c){
+        this->data = val;
+        this->i = r;
+        this->j = c;
+        
+    }
+    
+};
+
+
+
+class compare{
+        public:
+        
+        bool operator()(node* a , node* b){
+            return a->data > b->data;
+        }
+};
+
+
+
+class Solution{
+    public:
+    
+    
+    pair<int,int> findSmallestRange(int KSortedArray[][N], int n, int k)
+    {
+         pair<int,int> ans;
+         
+         int mini = INT_MAX;
+         int maxi = INT_MIN;
+         
+         priority_queue < node* , vector<node*> , compare > pq;
+         
+         
+         
+         // Step 1 :  for k elements n aray ki first value daal k , HeaP Bnalo ..
+         
+         for(int i=0;i<k;i++){
+             
+             int ele = KSortedArray[i][0];
+             maxi = max(maxi , ele);
+             
+             node* newnode = new node(ele , i , 0);
+             
+             pq.push(newnode);
+        }
+            
+            node* ptr = pq.top();
+            mini = ptr->data;
+            
+            
+        int start = mini;
+        int end   = maxi;
+        
+        
+        
+                    
+        // Step 2 :
+         while(!pq.empty()){
+             
+             node* temp = pq.top();
+             pq.pop();
+             
+             mini = temp->data;
+             
+             if(maxi - mini  < end - start){
+                 start = mini;
+                 end = maxi;
+             }
+             
+             
+             if(temp->j + 1  < n){
+                 maxi = max(maxi , KSortedArray[temp->i][ temp->j + 1 ] );
+                 
+                 int ele = KSortedArray[temp->i][ temp->j + 1 ];
+                 
+                 node* newnode = new node(ele , temp->i , temp->j + 1);
+                 
+                 pq.push(newnode);
+                 
+             }
+             
+             
+             else{
+                 break;
+             }
+             
+    }   // while loop ktm  (:
+    
+    
+    ans.first = start;
+    ans.second = end;
+
+
+        return ans;
+        
+    
+    
+         
+    }
+};
