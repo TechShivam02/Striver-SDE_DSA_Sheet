@@ -1,0 +1,79 @@
+int count(struct Node* root){
+      if(root == NULL){
+          return 0;
+      }
+      
+      int left = count(root->left);
+      int right = count(root->right);
+      
+      return left+1+right;
+      
+  }
+  
+  
+  bool isCompleteBTree(struct Node* root , int index , int n){
+    
+    if(root == NULL){
+        return true;
+    }    
+    
+    if(index >= n){
+        return false;
+    }
+    
+    bool left = isCompleteBTree(root->left , 2*index+1 , n);
+    bool right = isCompleteBTree(root->right , 2*index+2 , n);
+    
+    
+    return left && right;
+    
+  }
+  
+  
+  bool ismaxHeap(struct Node* root){
+      if(root == NULL){
+          return true;
+      }
+      
+      if(root->left == NULL && root->right == NULL){
+          return true;
+      }
+      
+      if(root->left && !root->right){
+          return root->data > root->left->data;
+      }
+      
+      bool left = ismaxHeap(root->left);
+      bool right = ismaxHeap(root->right);
+      
+      bool op3 = root->data > root->left->data && root->data > root->right->data;
+      
+      
+      if(left && right && op3){
+          return true;
+      }
+      
+      return false;
+      
+      
+  }
+  
+  
+  
+  
+  
+  
+    bool isHeap(struct Node* root) {
+        
+        
+        int n = count(root);
+        
+        int index=0;
+        if( isCompleteBTree(root , index , n) && ismaxHeap(root) ){
+            return true;    
+        }
+        
+        return false;
+        
+        
+    }
