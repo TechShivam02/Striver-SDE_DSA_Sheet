@@ -1,0 +1,134 @@
+ string findSum_of_twoStrings(string str1 , string str2){
+    
+        reverse(str1.begin() , str1.end());
+        
+        reverse(str2.begin() , str2.end());
+        
+        // cout<<str1<<" "<<str2<<endl;
+        
+        
+        
+        int carry = 0;
+        
+        int m = str1.length();
+        int n=str2.length();
+        
+        int i=0;
+        int j=0;
+        
+        
+        string ans = "";
+        
+        while(i<m && j<n)
+        {
+            int dig1 = str1[i] -'0';
+            int dig2 = str2[j] -'0';
+            
+            int sum = dig1+dig2 + carry;
+            
+            carry = sum /10;
+            
+            sum = sum % 10;
+            
+            
+            ans += to_string(sum);
+            
+            
+            
+            i++;
+            j++;
+            
+            
+        }
+        
+        
+         while(i<m)
+        {
+            int dig1 = str1[i] -'0';
+            
+            int sum = dig1 + carry;
+            
+            carry = sum /10;
+            
+            sum = sum % 10;
+        
+            ans += to_string(sum);
+            i++;
+        
+        }
+        
+        
+        
+        while(j<n)
+        {
+            int dig2 = str2[j] -'0';
+            
+            int sum = dig2 + carry;
+            
+            carry = sum /10;
+            
+            sum = sum % 10;
+        
+            ans += to_string(sum);
+            j++;
+        
+        }
+        
+        
+        if(carry > 0){
+            ans += to_string(carry);
+        }
+        
+        
+        
+        
+        reverse(ans.begin() , ans.end());
+        
+        return ans;
+        
+        
+    }
+    
+    string solve(int arr[], int n) {
+        // code here
+        
+        // 0 3 4 5 7
+        
+        // 047  35
+        
+        
+        sort(arr , arr+n);  // step 1;
+        
+        
+        // step 2
+        
+        string str1 = "";
+        string str2 = "";
+        
+        
+        
+        for(int i=0;i<n;i++){
+            
+            if(arr[i] != 0){
+                
+                
+                if(i%2 == 0){
+                   str1 += to_string(arr[i]);
+                }
+                
+                else{
+                   str2 += to_string(arr[i]);
+                }
+                
+            }
+            
+        }
+        
+        
+        return findSum_of_twoStrings(str1 , str2);
+        
+        
+        
+        
+        
+    }
