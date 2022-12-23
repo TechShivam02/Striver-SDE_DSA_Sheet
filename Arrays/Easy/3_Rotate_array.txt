@@ -1,0 +1,68 @@
+ void rotate(vector<int>& arr, int k) {
+        
+        
+        // Time Comp : O(n)  Spacecomp : O(n);
+        
+//         int n = nums.size();
+//         vector<int> ans(n);
+
+//         for(int i=0;i<n;i++){
+//             ans[ (i+k )% n] = nums[i];
+//         }
+        
+//         nums = ans;
+        
+       
+        
+        // Time Comp : O(n)  Space Comp : O(1)
+        
+        int n=arr.size();
+        
+        k=k%n;
+        
+        int i=0;
+        int j=n-k-1;
+        
+        while(i<j){
+            int temp = arr[i];
+            
+            arr[i] = arr[j];
+            arr[j] = temp;
+            
+            i++;
+            j--;
+            
+        }
+        
+        
+        int q=n-k;
+        int w = n-1;
+        
+        while(q<w){
+            int temp = arr[q];
+            
+            arr[q] = arr[w];
+            arr[w] = temp;
+            
+            q++;
+            w--;
+        }
+        
+        
+        
+        i=0;
+        j=n-1;
+        
+       while(i<j){
+            int temp = arr[i];
+            
+            arr[i] = arr[j];
+            arr[j] = temp;
+            
+            i++;
+            j--;
+            
+        }
+        
+        
+    }

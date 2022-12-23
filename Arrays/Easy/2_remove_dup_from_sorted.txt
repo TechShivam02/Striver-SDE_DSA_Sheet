@@ -1,0 +1,26 @@
+int removeDuplicates(vector<int>& arr) {
+        
+        
+        
+        int n=arr.size();
+        
+        int s=0;
+        
+        for(int i=1 ; i<n;i++){
+            
+            if(arr[s] == arr[i]){
+                continue;
+            }
+            
+            else{
+                s++;
+                arr[s] = arr[i];
+                
+            }
+            
+        }
+        
+        return s+1;
+        
+        
+    }
