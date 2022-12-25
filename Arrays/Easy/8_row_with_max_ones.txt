@@ -1,0 +1,10 @@
+for(int j=0;j<m;j++){      // col
+	        for(int i=0;i<n;i++){   // row
+	            if(arr[i][j] == 1){
+	                return i;
+	            }
+	        }
+	    }
+	    
+	    return -1;
+	    
