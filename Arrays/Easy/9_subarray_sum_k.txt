@@ -1,0 +1,25 @@
+int subarraySum(vector<int>& nums, int k) {
+
+        int n=nums.size();
+        
+        int count=0;
+        int curr=0;
+        
+        for(int i=0;i<n;i++){
+            
+            curr += nums[i];
+            
+            if(curr == k){
+                count++;
+                
+                curr = nums[i];
+            }
+            
+            if(curr > k || curr< 0) {
+                curr=0;
+            }
+        }
+        
+        return count;
+        
+    }
