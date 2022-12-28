@@ -1,0 +1,30 @@
+int majorityElement(vector<int>& arr) {
+        
+        int maj = arr[0];
+        int count=1;
+        
+        int n=arr.size();
+        
+        
+        for(int i=1;i<n;i++){
+            
+            if(count == 0){
+                maj = arr[i];
+                count++;
+            }
+            
+            else if(maj == arr[i]){
+                count++;
+            }
+            
+            else{
+                count--;
+            }
+            
+            
+        }
+        
+        return maj;
+        
+        
+    }

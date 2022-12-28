@@ -1,0 +1,23 @@
+ int maxSubArray(vector<int>& arr) {
+        
+        int n=arr.size();
+        
+        int curr =0 ;
+        int maxi = -100000;
+    
+    for(int i=0;i<n;i++){
+        curr += arr[i];
+        
+        if(curr > maxi){
+            maxi = curr;
+        }
+        
+        if(curr < 0){
+            curr = 0;
+        }
+    }
+    
+    return maxi;
+        
+        
+    }
