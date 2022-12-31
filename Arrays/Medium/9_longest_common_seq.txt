@@ -1,0 +1,56 @@
+  int longestConsecutive(vector<int>& nums) {
+   
+            map<int,int> mp;
+        
+            int n = nums.size();
+        
+        
+        if(n==0){
+            return 0;
+        }
+        
+        
+            for(int i=0;i<n;i++){
+                mp[nums[i]]++;
+            }
+        
+            
+           
+        
+            map<int, int>::iterator itr;
+        
+        vector<pair<int,int> > ans;
+        
+        for (itr = mp.begin(); itr != mp.end(); itr++) {
+            ans.push_back({itr->first , itr->second});
+         }
+        
+        
+    
+         int m = ans.size();
+        
+         int maxi = 0;
+         int count=0;
+ 
+        for(int i=0;i<m-1;i++){
+            // cout<<ans[i].first<< " : " << ans[i].second<<endl;
+            
+            if(ans[i+1].first - ans[i].first == 1){
+                count++;
+            }
+            
+            else{
+                count=0;
+            }
+            
+            if(count > maxi){
+                maxi = count;
+            }
+            
+            
+        }
+        
+        return maxi+1;
+        
+        
+    }

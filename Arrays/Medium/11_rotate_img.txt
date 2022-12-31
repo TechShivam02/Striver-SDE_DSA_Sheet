@@ -1,0 +1,65 @@
+void rotate(vector<vector<int>>& arr) {
+     
+        int r = arr.size();
+        int c = arr[0].size();
+        
+       
+        
+        
+        
+        for(int i=0;i<r;i++){
+            
+            for(int j=0;j<c;j++){
+                
+                if(i<j)
+                {
+                  swap(arr[i][j],arr[j][i]);  
+                }
+                
+            }
+            
+        }
+        
+        
+        
+        for(int i=0;i<r;i++){
+        
+                int st=0;
+                int end=c-1;
+            
+                while(st<end){
+                    swap(arr[i][st] , arr[i][end]);
+                    
+                    st++;
+                    end--;
+                    
+                }
+            
+        }
+        
+        
+        
+        for(int i=0;i<r;i++){
+            
+            for(int j=0;j<c;j++){
+                
+                cout<<arr[i][j]<<" : ";
+                
+            }
+            cout<<endl;
+            
+            
+        }
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+    }

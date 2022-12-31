@@ -1,0 +1,41 @@
+ void setZeroes(vector<vector<int>>& arr) {
+        
+        int row = arr.size();
+        int col = arr[0].size();
+        
+        
+        vector<int> rowarr(row,-1);
+        vector<int> colarr(col,-1);
+        
+        for(int i=0;i<row;i++){
+            
+            for(int j=0;j<col;j++){
+                if(arr[i][j] == 0){
+                    rowarr[i] =0;
+                    colarr[j] = 0;
+                }    
+            }
+            
+        }
+        
+        
+        for(int i=0;i<row;i++){
+            
+            for(int j=0;j<col;j++){
+                
+               if(rowarr[i] == 0 || colarr[j] ==0){
+                   
+                   arr[i][j]=0;
+                   
+               }   
+                
+            }
+            
+        }
+        
+        
+        
+        
+        
+        
+    }
