@@ -1,0 +1,58 @@
+bool isIsomorphic(string s, string t) {
+        
+        if(s.length() != t.length()){
+            return 0;
+        }
+        
+        
+        
+        unordered_map<char,char> mp;
+        
+        unordered_map<char , char> key;
+        
+        
+        
+        
+        
+        for(int i=0;i<s.length();i++){
+            
+            
+            if(mp.find(s[i]) != mp.end() ){  // it means found 
+                
+                char ans = mp[s[i]];
+                
+                if(ans != t[i]){
+                    return false;
+                }
+            }
+            
+            else if(key.find(t[i]) != key.end() ){  // it means found 
+                
+                char ans = key[t[i]];
+                
+                if(ans != s[i]){
+                    return false;
+                }
+            }
+            
+            
+            
+            
+            mp[s[i]] = t[i];
+            
+            
+            key[t[i]] = s[i];
+            
+            
+            
+            
+            
+            
+        }
+        
+        return true;
+        
+        
+        
+        
+    }

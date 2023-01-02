@@ -1,0 +1,62 @@
+ string largestOddNumber(string str) {
+        
+        
+        /*   //  Time Comp : O(n2)  Sc : O(n2)    
+        
+            
+            Time limit Exceed
+        
+        
+        long long int n=str.length();
+        
+        long long int maxi=-1;
+        
+        
+        for(long long int i=0;i<n;i++){
+            
+            string ans = "";
+            
+            for(long long int j=i;j<n;j++){
+                ans += str[j]; 
+                
+                long long int num = stoll(ans);
+                
+                if(num % 2 != 0 && num > maxi)
+                {
+                    maxi = num;
+                }
+            }
+            
+            
+        }
+        
+        
+        if(maxi == -1)
+        {
+            return "";
+        }
+        
+        return to_string(maxi);
+        
+        */
+        
+        
+        int n =str.length();
+        
+        string ans="";
+        
+        for(int i=n-1 ; i>=0; i--){
+            
+            if( str[i] % 2 != 0)
+            {
+                return str.substr(0,i+1);
+            }   
+        
+        }
+        
+        return ans;
+        
+        
+        
+        
+    }3_
